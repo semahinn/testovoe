@@ -33,7 +33,7 @@ class Test extends TestCase
       return $api->get_api_path($user, $api_path_template);
     }, $api_path_templates);
 
-    $expected_result = ['/api/items/20/John Dow','/api/items/20/QA','/api/items/20/100'];
+    $expected_result = ["/$api_prefix/20/John Dow", "/$api_prefix/20/QA", "/$api_prefix/20/100"];
     foreach ($expected_result as $key => $result_value) {
       $api_path_template = $api_path_templates[$key];
       $this->assertArrayHasKey($key, $api_paths, "Отсутствует результат для шаблона '$api_path_template'");
