@@ -38,19 +38,20 @@ class Api
   {
     if ($this->match_property_name($id_property))
       $this->idProperty = $id_property;
-    else throw new \InvalidArgumentException('Ключ идентификатора должнен быть строкой, 
-    состоящей из строчных символов (a-z), может содержать нижние подчёркивания');
+    else throw new \InvalidArgumentException(
+      'Ключ идентификатора должнен быть строкой, состоящей из строчных символов (a-z), может содержать нижние подчёркивания');
 
     foreach ($necessary_properties as $property)
     {
       if (!$this->match_property_name($property))
-        throw new \InvalidArgumentException('Ключ любого свойства должен быть строкой, 
-        состоящей из строчных символов (a-z), может содержать нижние подчёркивания');
+        throw new \InvalidArgumentException(
+          'Ключ любого свойства должен быть строкой, состоящей из строчных символов (a-z), может содержать нижние подчёркивания');
     }
     $this->allowedProperties = $necessary_properties;
 
     if (!preg_match('/^[a-z]+(\\/[a-z]+)*$/', $api_prefix))
-      throw new \InvalidArgumentException('Префикс шаблона должен состоять из слов, разделённых символом \'/\'. Например: api/items');
+      throw new \InvalidArgumentException(
+        'Префикс шаблона должен состоять из слов, разделённых символом \'/\'. Например: api/items');
     $this->apiPrefix = $api_prefix;
   }
 

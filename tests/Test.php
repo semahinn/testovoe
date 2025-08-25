@@ -37,8 +37,7 @@ class Test extends TestCase
     foreach ($expected_result as $key => $result_value) {
       $api_path_template = $api_path_templates[$key];
       $this->assertArrayHasKey($key, $api_paths, "Отсутствует результат для шаблона '$api_path_template'");
-      $this->assertEquals($api_paths[$key], $result_value, "Полученный результат ('{$api_paths[$key]}') 
-      не совпадает с требуемым ('$result_value')");
+      $this->assertEquals($api_paths[$key], $result_value, "Полученный результат ('{$api_paths[$key]}') не совпадает с требуемым ('$result_value')");
     }
   }
 }
