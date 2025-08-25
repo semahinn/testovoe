@@ -49,6 +49,8 @@ class Api
     }
     $this->allowedProperties = $necessary_properties;
 
+    if (!preg_match('/^[a-z]+(\\/[a-z]+)*$/', $api_prefix))
+      throw new \InvalidArgumentException('Префикс шаблона должен состоять из слов, разделённых символом \'/\'. Например: api/items');
     $this->apiPrefix = $api_prefix;
   }
 
@@ -97,7 +99,7 @@ class Api
     $matches = [];
     if (!preg_match($pattern, $template, $matches))
       throw new \Exception("Шаблон '$template' не соответствует формату api. Формат api - " .
-        "{$this->apiPrefix}/{$this->idProperty}/{ключ_свойства}");
+        "/{$this->apiPrefix}/{$this->idProperty}/{ключ_свойства}");
     $property_name = $matches[1];
 
     if (!in_array($property_name, $this->allowedProperties))

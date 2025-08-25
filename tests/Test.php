@@ -10,6 +10,7 @@ class Test extends TestCase
 {
   public function test()
   {
+    $api_prefix = 'api/items';
     $user =
       [
         'id' => 20,
@@ -20,12 +21,12 @@ class Test extends TestCase
 
     $api_path_templates =
       [
-        "/api/items/%id%/%name%",
-        "/api/items/%id%/%role%",
-        "/api/items/%id%/%salary%"
+        "/$api_prefix/%id%/%name%",
+        "/$api_prefix/%id%/%role%",
+        "/$api_prefix/%id%/%salary%"
       ];
 
-    $api = new Api('id', ['name', 'role', 'salary']);
+    $api = new Api('id', ['name', 'role', 'salary'], $api_prefix);
 
     $api_paths = array_map(function ($api_path_template) use ($api, $user)
     {
