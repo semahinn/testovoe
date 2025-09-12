@@ -18,6 +18,3 @@
 /phpunit.xml
 /.phpunit.cache/
 ###< phpunit/phpunit ###
-/bin/
-/config/
-/public/
